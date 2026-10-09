@@ -1,0 +1,40 @@
+# REVIEW paths before use. Identity values are in the CSR, not this file.
+
+[ ca ]
+default_ca = CA_default
+
+[ CA_default ]
+dir               = "C:/PrivatePKI/IssuingCA"
+certs             = "C:/PrivatePKI/IssuingCA/certs"
+crl_dir           = "C:/PrivatePKI/IssuingCA/crl"
+new_certs_dir     = "C:/PrivatePKI/IssuingCA/newcerts"
+database          = "C:/PrivatePKI/IssuingCA/db/index.txt"
+serial            = "C:/PrivatePKI/IssuingCA/db/serial"
+crlnumber         = "C:/PrivatePKI/IssuingCA/db/crlnumber"
+certificate       = "C:/PrivatePKI/IssuingCA/certs/issuing-ca.cert.pem"
+private_key       = "C:/PrivatePKI/IssuingCA/private/issuing-ca.key.pem"
+crl               = "C:/PrivatePKI/IssuingCA/crl/issuing-ca.crl.pem"
+default_md        = sha256
+default_days      = 730
+default_crl_days  = 7
+policy            = policy_loose
+email_in_dn       = no
+preserve          = no
+copy_extensions   = none
+unique_subject    = no
+name_opt          = ca_default
+cert_opt          = ca_default
+crl_extensions    = crl_ext
+
+[ policy_loose ]
+countryName             = optional
+stateOrProvinceName     = optional
+localityName            = optional
+organizationName        = optional
+organizationalUnitName  = optional
+title                   = optional
+commonName              = supplied
+emailAddress            = optional
+
+[ crl_ext ]
+authorityKeyIdentifier  = keyid:always

@@ -1,0 +1,4 @@
+Private Document-Signing PKI Reference Package
+Version: 1.0.1
+Build date: 2026-10-09
+Profile: Offline Root CA -> Document-Signing Issuing CA -> Named Document Signer

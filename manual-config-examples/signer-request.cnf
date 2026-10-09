@@ -1,0 +1,18 @@
+# REVIEW AND REPLACE every CHANGE-ME value before use.
+
+[ req ]
+default_bits        = 3072
+prompt              = no
+distinguished_name  = signer_dn
+string_mask         = utf8only
+utf8                = yes
+
+[ signer_dn ]
+C = "US"
+ST = "CHANGE-ME STATE"
+L = "CHANGE-ME CITY"
+O = "CHANGE-ME EXACT LEGAL ORGANIZATION"
+OU = "Document Signing"
+title = "CHANGE-ME AUTHORIZED SIGNER TITLE"
+CN = "CHANGE-ME FULL LEGAL NAME, CREDENTIALS"
+emailAddress = "CHANGE-ME@YOUR-DOMAIN.example"

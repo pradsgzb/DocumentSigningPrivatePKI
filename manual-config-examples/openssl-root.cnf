@@ -1,0 +1,70 @@
+# REVIEW AND REPLACE every CHANGE-ME value before use.
+# This example assumes C:/PrivatePKI/RootCA and a stable publication URL.
+
+[ ca ]
+default_ca = CA_default
+
+[ CA_default ]
+dir               = "C:/PrivatePKI/RootCA"
+certs             = "C:/PrivatePKI/RootCA/certs"
+crl_dir           = "C:/PrivatePKI/RootCA/crl"
+new_certs_dir     = "C:/PrivatePKI/RootCA/newcerts"
+database          = "C:/PrivatePKI/RootCA/db/index.txt"
+serial            = "C:/PrivatePKI/RootCA/db/serial"
+crlnumber         = "C:/PrivatePKI/RootCA/db/crlnumber"
+certificate       = "C:/PrivatePKI/RootCA/certs/root-ca.cert.pem"
+private_key       = "C:/PrivatePKI/RootCA/private/root-ca.key.pem"
+crl               = "C:/PrivatePKI/RootCA/crl/root-ca.crl.pem"
+default_md        = sha384
+default_days      = 3652
+default_crl_days  = 365
+policy            = policy_strict
+email_in_dn       = no
+preserve          = no
+copy_extensions   = none
+unique_subject    = no
+name_opt          = ca_default
+cert_opt          = ca_default
+crl_extensions    = crl_ext
+
+[ policy_strict ]
+countryName             = match
+stateOrProvinceName     = optional
+localityName            = optional
+organizationName        = match
+organizationalUnitName  = optional
+commonName              = supplied
+emailAddress            = optional
+
+[ req ]
+default_bits        = 4096
+prompt              = no
+distinguished_name  = root_dn
+x509_extensions     = v3_root_ca
+string_mask         = utf8only
+utf8                = yes
+
+[ root_dn ]
+C = "US"
+ST = "CHANGE-ME STATE"
+L = "CHANGE-ME CITY"
+O = "CHANGE-ME EXACT LEGAL ORGANIZATION"
+OU = "Public Key Infrastructure"
+CN = "CHANGE-ME ORGANIZATION Root CA 2026"
+
+[ v3_root_ca ]
+subjectKeyIdentifier    = hash
+authorityKeyIdentifier  = keyid:always
+basicConstraints        = critical, CA:true, pathlen:1
+keyUsage                = critical, keyCertSign, cRLSign
+
+[ v3_intermediate_ca ]
+subjectKeyIdentifier    = hash
+authorityKeyIdentifier  = keyid:always, issuer
+basicConstraints        = critical, CA:true, pathlen:0
+keyUsage                = critical, keyCertSign, cRLSign
+authorityInfoAccess     = caIssuers;URI:https://CHANGE-ME-PKI-HOST.example/document-signing/root-ca.cer
+crlDistributionPoints   = URI:https://CHANGE-ME-PKI-HOST.example/document-signing/root-ca.crl
+
+[ crl_ext ]
+authorityKeyIdentifier  = keyid:always

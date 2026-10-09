@@ -1,0 +1,16 @@
+# REVIEW AND REPLACE every CHANGE-ME value before use.
+
+[ req ]
+default_bits        = 4096
+prompt              = no
+distinguished_name  = issuing_dn
+string_mask         = utf8only
+utf8                = yes
+
+[ issuing_dn ]
+C = "US"
+ST = "CHANGE-ME STATE"
+L = "CHANGE-ME CITY"
+O = "CHANGE-ME EXACT LEGAL ORGANIZATION"
+OU = "Document Signing"
+CN = "CHANGE-ME ORGANIZATION Document Signing Issuing CA 2026"

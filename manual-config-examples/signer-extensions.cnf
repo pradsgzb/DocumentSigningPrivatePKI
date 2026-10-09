@@ -1,0 +1,14 @@
+# REVIEW AND REPLACE every CHANGE-ME value before use.
+
+[ document_signer ]
+subjectKeyIdentifier    = hash
+authorityKeyIdentifier  = keyid:always, issuer
+basicConstraints        = critical, CA:false
+keyUsage                = critical, digitalSignature, nonRepudiation
+extendedKeyUsage        = 1.3.6.1.5.5.7.3.36, 1.3.6.1.4.1.311.10.3.12, 1.2.840.113583.1.1.5
+subjectAltName          = @signer_alt_names
+authorityInfoAccess     = caIssuers;URI:https://CHANGE-ME-PKI-HOST.example/document-signing/issuing-ca.cer
+crlDistributionPoints   = URI:https://CHANGE-ME-PKI-HOST.example/document-signing/issuing-ca.crl
+
+[ signer_alt_names ]
+email.1 = "CHANGE-ME@YOUR-DOMAIN.example"
